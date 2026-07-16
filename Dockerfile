@@ -5,9 +5,9 @@ WORKDIR /app
 COPY . .
 
 RUN pip install --upgrade pip
-RUN pip install gunicorn
+RUN pip install -r requirements.txt
 RUN pip install .
 
 EXPOSE 10000
 
-CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:10000"]
+CMD ["gunicorn", "--bind", "0.0.0.0:10000", "app:app"]
